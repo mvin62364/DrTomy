@@ -1,0 +1,30 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
+	<mdb-navbar-brand>
+		<a class="navbar-brand" routerLink="home">
+			<img src="https://mail.google.com/mail/u/0?ui=2&ik=94474c8641&attid=0.1&permmsgid=msg-a:r-3518607356308580383&th=1793ad173e78e283&view=att&disp=safe&realattid=f_koayyxy80" loading="lazy" width="200" height="60" loading="lazy">
+		</a>
+	</mdb-navbar-brand>
+
+	<links>
+		<ul class="navbar-nav">
+			<ng-container *ngIf="authorized; else elseTemplate">
+				<li class="nav-item">
+					<a class="nav-link waves-light" routerLink="profile" mdbWavesEffect><mdb-icon fas icon="user-secret"></mdb-icon> <strong>{{username}}</strong></a>
+				</li>
+			</ng-container>
+			<ng-template #elseTemplate>
+				<li class="nav-item">
+					<a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user-secret"></mdb-icon> <strong>Войти</strong></a>
+				</li>
+			</ng-template>
+
+		</ul>
+
+		<ul class="navbar-nav ml-auto" *ngIf="authorized">
+			<li class="nav-item">
+				<a class="nav-link waves-light" routerLink="authentication" mdbWavesEffect (click)="signout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon>&nbsp;&nbsp;Sign out</a>
+			</li>
+		</ul>
+	</links>
+</mdb-navbar>

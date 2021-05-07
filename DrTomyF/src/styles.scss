@@ -1,0 +1,238 @@
+/* You can add global styles to this file, and also import other style files */
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+// Variables
+:root {
+	--mainColor: #6c757d;
+	--sectionBg: #eeeeeed0;
+	--mainBg: rgba(240, 240, 240, 0.904);
+	--mainShadow: 0 0 5px 0 rgba(0, 0, 0, 0.384);
+}
+
+// Screen Sizes
+$tablet: 750px;
+
+// Screen mixins
+@mixin tablet {
+	@media (min-width: #{$tablet}) {
+		@content;
+	}
+}
+
+* {
+	box-sizing: border-box;
+	transition: 2s;
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	min-height: 100vh;
+}
+
+small,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+	color: var(--mainColor);
+}
+
+p{
+	font-size: 16px !important;
+}
+
+small, 
+a{
+	font-size: 14px !important;
+}
+
+nav.navbar, 
+footer,
+.jumbotron{
+	background-color: var(--sectionBg);
+	box-shadow: var(--mainShadow);
+}
+
+
+.navbar .navbar-nav .nav-item a.nav-link,
+.navbar .navbar-nav .nav-item a.dropdown-item{
+	color: var(--mainColor) !important;
+}
+
+.main{
+	margin: 50px 0;
+
+	.error_alert, .other_error_alert{
+		border: 1px solid transparent;
+		background-color: #f8d7da;
+		border-color: #f5c6cb;
+		padding: .25rem 1.25rem;
+		border-radius: .25rem;
+		position: relative;
+		color: #721c24;
+		display: block;
+	}
+
+	.show{
+		display: block;
+	}
+	
+	.hide{
+		display: none !important;
+	}
+
+	.md-form{
+		margin: 25px 0;
+	}
+
+	.jumbotron, #changeModal, #deleteModal{
+		background-color: var(--mainBg);
+	}
+
+	.authentication_forms{
+		padding: 0 30px;
+		
+		.register,
+		.login{
+			max-width: 500px;
+			padding: 20px 0;
+			margin: auto;
+		}
+	}
+
+	.profile-settings{
+		padding: 0 1rem;
+		.profile{
+			img{
+				height: 185px;
+				width: 200px;
+			}
+
+			.avatar_icon{
+				justify-content: center;
+				align-items: center;
+				font-size: xx-large;
+				display: flex;
+				height: 185px;
+				width: 200px;
+			}
+
+			h5{
+				text-align: center;
+				margin-top: 25px;
+			}
+		}
+
+		.btn{
+			width: 150px;
+		}
+	}
+}
+
+@include tablet{
+	.authentication_forms{
+		grid-template-areas: "login register";
+		grid-template-columns: 1fr 1fr;
+		display: grid;
+
+		.register,
+		.login{
+			padding: 1rem !important;
+			width: 100%;
+		}
+
+		.login{
+			grid-area: login;
+			
+		}
+
+		.register{
+			grid-area: register;
+		}
+	}
+
+	.profile-settings{
+		grid-template-areas: "profile settings";
+		grid-template-columns: 1fr 2fr;
+		display: grid;
+		gap: 20px;
+
+		.profile{
+			justify-content: center;
+			align-items: center;
+			grid-area: profile;
+			display: flex;
+		}
+
+		.settings{
+			grid-area: settings;
+			padding: 0 50px;
+		}
+	}
+}
+
+// Animate Elements
+.text_pop {
+	animation: text_pop 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate-reverse both;
+}
+
+.text_shadow {
+	animation: text_shadow 1s ease-in-out infinite alternate-reverse both;
+}
+
+@-webkit-keyframes text_pop {
+	0% {
+		transform: translateY(0);
+		transform-origin: 50% 50%;
+	  	text-shadow: none;
+	}
+	100% {
+		transform: translateY(-50px);
+		transform-origin: 50% 50%;
+	  	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+	}
+}
+  
+@keyframes text_pop {
+	0% {
+		transform: translateY(0);
+		transform-origin: 50% 50%;
+	  	text-shadow: none;
+	}
+	100% {
+		transform: translateY(-50px);
+		transform-origin: 50% 50%;
+	  	text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+	}
+}
+
+@-webkit-keyframes text_shadow {
+	0% {
+	  	text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	}
+	100% {
+	  	text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+	}
+}
+
+@keyframes text_shadow {
+	0% {
+		text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	}
+	100% {
+		text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+	}
+}
+  
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
